@@ -122,7 +122,7 @@ public class Login extends JFrame {
 		sl_panel.putConstraint(SpringLayout.NORTH, Icon, 10, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.WEST, Icon, 26, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, Icon, -30, SpringLayout.EAST, panel);
-		Icon.setIcon(new ImageIcon("D:\\eclipse-workspacce\\TeamMusicPC\\img\\Webp.net-resizeimage.jpg"));
+		Icon.setIcon(new ImageIcon("D:\\eclipse-workspacce\\TeamMusicPC\\src\\tw\\music\\streamer\\res\\Webp.net-resizeimage.jpg"));
 		panel.add(Icon);
 		
 		JLabel lblTeammusic = new JLabel("TeamMusic");
