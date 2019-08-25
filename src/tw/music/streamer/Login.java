@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.awt.Color;
 import javax.swing.SpringLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -32,9 +33,10 @@ public class Login extends JFrame {
 	private Font GoogleSansBold;
 	Font GoogleSansMedium;
 	Font GoogleSansRegular;
-	private JTextField textField;
 	private JPasswordField passwordField;
 	private boolean isLogin = true;
+	private JTextField EmailField;
+	private JTextField nameField;
 
 	/**
 	 * Launch the application.
@@ -104,6 +106,12 @@ public class Login extends JFrame {
 		contentPane.add(lblRegister);
 		
 		JPanel panel = new JPanel();
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "TeamMusic Adalah Sebuah Aplikasi Android Dan Windows Yang Dibuat Dengan Java Oleh Kebosanan Yang Tidak Ada Habisnya", "Easter Egg", 1);
+			}
+		});
 		panel.setBackground(new Color(36, 151, 242));
 		panel.setBounds(0, 0, 165, 462);
 		contentPane.add(panel);
@@ -125,59 +133,66 @@ public class Login extends JFrame {
 		sl_panel.putConstraint(SpringLayout.NORTH, lblTeammusic, 6, SpringLayout.SOUTH, Icon);
 		panel.add(lblTeammusic);
 		
-		JLabel lblTeammusicAdalahSebuah = new JLabel("TeamMusic Adalah Sebuah Aplikasi Android");
-		sl_panel.putConstraint(SpringLayout.NORTH, lblTeammusicAdalahSebuah, 19, SpringLayout.SOUTH, lblTeammusic);
-		sl_panel.putConstraint(SpringLayout.WEST, lblTeammusicAdalahSebuah, 53, SpringLayout.WEST, panel);
-		panel.add(lblTeammusicAdalahSebuah);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(0, 114, 632, 328);
 		contentPane.add(panel_1);
-		SpringLayout sl_panel_1 = new SpringLayout();
-		panel_1.setLayout(sl_panel_1);
+		panel_1.setLayout(null);
 		
-		JPanel panel_2 = new JPanel();
-		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_2, 71, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, panel_2, -468, SpringLayout.EAST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, panel_2, -10, SpringLayout.EAST, panel_1);
-		panel_1.add(panel_2);
-		panel_2.setLayout(null);
+		JPanel NamePanel = new JPanel();
+		NamePanel.setVisible(false);
+		NamePanel.setBounds(164, 75, 468, 39);
+		panel_1.add(NamePanel);
+		NamePanel.setLayout(null);
+		
+		JLabel lblName = new JLabel("Name : ");
+		lblName.setFont(GoogleSansRegular.deriveFont(15f));
+		lblName.setForeground(new Color(12, 142, 245));
+		lblName.setBounds(20, 0, 72, 39);
+		NamePanel.add(lblName);
+		
+		nameField = new JTextField();
+		nameField.setFont(new Font("Calibri", Font.PLAIN, 13));
+		nameField.setColumns(10);
+		nameField.setBorder(UIManager.getBorder("PopupMenu.border"));
+		nameField.setBounds(100, 8, 333, 20);
+		NamePanel.add(nameField);
+		
+		JPanel EmailPanel = new JPanel();
+		EmailPanel.setBounds(164, 114, 458, 45);
+		panel_1.add(EmailPanel);
+		EmailPanel.setLayout(null);
 		
 		JLabel lblEmail = new JLabel("Email : ");
+		lblEmail.setBounds(21, 0, 87, 39);
 		lblEmail.setFont(GoogleSansRegular.deriveFont(15f));
 		lblEmail.setForeground(new Color(12, 142, 245));
-		lblEmail.setBounds(21, 0, 87, 39);
-		panel_2.add(lblEmail);
+		EmailPanel.add(lblEmail);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Calibri", Font.PLAIN, 13));
-		textField.setBorder(UIManager.getBorder("PopupMenu.border"));
-		textField.setBounds(102, 8, 333, 20);
-		panel_2.add(textField);
-		textField.setColumns(10);
+		EmailField = new JTextField();
+		EmailField.setFont(new Font("Calibri", Font.PLAIN, 13));
+		EmailField.setColumns(10);
+		EmailField.setBorder(UIManager.getBorder("PopupMenu.border"));
+		EmailField.setBounds(100, 9, 333, 20);
+		EmailPanel.add(EmailField);
 		
-		JPanel panel_3 = new JPanel();
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_2, -26, SpringLayout.NORTH, panel_3);
-		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_3, 136, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, panel_3, -400, SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, -153, SpringLayout.SOUTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, panel_3, -10, SpringLayout.EAST, panel_1);
-		panel_1.add(panel_3);
-		panel_3.setLayout(null);
+		JPanel PasswordPanel = new JPanel();
+		PasswordPanel.setBounds(-400, 158, 1022, 39);
+		panel_1.add(PasswordPanel);
+		PasswordPanel.setLayout(null);
 		
 		JLabel lblPassword = new JLabel("Password : ");
 		lblPassword.setFont(GoogleSansRegular.deriveFont(15f));
 		lblPassword.setForeground(new Color(12, 142, 245));
 		lblPassword.setBounds(582, 0, 80, 39);
-		panel_3.add(lblPassword);
+		PasswordPanel.add(lblPassword);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBorder(UIManager.getBorder("PopupMenu.border"));
 		passwordField.setBounds(665, 9, 332, 20);
-		panel_3.add(passwordField);
+		PasswordPanel.add(passwordField);
 		
 		JButton btnLogin = new JButton("Login");
-		sl_panel_1.putConstraint(SpringLayout.NORTH, btnLogin, 229, SpringLayout.NORTH, panel_1);
+		btnLogin.setBounds(480, 229, 92, 39);
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -185,6 +200,7 @@ public class Login extends JFrame {
 					AnimationClass anim = new AnimationClass();
 					anim.jLabelYDown(lblLogin.getY(), 28, 1, 1, lblLogin);
 					anim.jLabelYDown(lblRegister.getY(), 120, 1, 1, lblRegister);
+					NamePanel.setVisible(false);
 					isLogin = true;
 				}
 				btnLogin.setBackground(new Color(0, 114, 204));
@@ -199,13 +215,11 @@ public class Login extends JFrame {
 		btnLogin.setBorderPainted(false);
 		btnLogin.setFocusPainted(true);
 		btnLogin.setFont(GoogleSansMedium);
-		sl_panel_1.putConstraint(SpringLayout.WEST, btnLogin, -152, SpringLayout.EAST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnLogin, 93, SpringLayout.SOUTH, panel_3);
 		btnLogin.setBorder(UIManager.getBorder("MenuBar.border"));
-		sl_panel_1.putConstraint(SpringLayout.EAST, btnLogin, -60, SpringLayout.EAST, panel_1);
 		panel_1.add(btnLogin);
 		
 		JButton btnRegister = new JButton("Register");
+		btnRegister.setBounds(313, 229, 145, 39);
 		btnRegister.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -213,6 +227,7 @@ public class Login extends JFrame {
 					AnimationClass anim = new AnimationClass();
 					anim.jLabelYUp(lblLogin.getY(), -70, 1, 1, lblLogin);
 					anim.jLabelYUp(lblRegister.getY(), 28, 1, 1, lblRegister);
+					NamePanel.setVisible(true);
 					isLogin = false;
 				}
 				btnRegister.setBackground(new Color(0, 114, 204));
@@ -222,19 +237,15 @@ public class Login extends JFrame {
 				btnRegister.setBackground(new Color(12, 142, 245));
 			}
 		});
-		
-		sl_panel_1.putConstraint(SpringLayout.WEST, btnRegister, -167, SpringLayout.WEST, btnLogin);
 		btnRegister.setForeground(new Color(250, 250, 250));
 		btnRegister.setBackground(new Color(12, 142, 245));
 		btnRegister.setBorderPainted(false);
 		btnRegister.setFocusPainted(true);
 		btnRegister.setFont(GoogleSansMedium);
-		sl_panel_1.putConstraint(SpringLayout.NORTH, btnRegister, 0, SpringLayout.NORTH, btnLogin);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnRegister, 0, SpringLayout.SOUTH, btnLogin);
-		sl_panel_1.putConstraint(SpringLayout.EAST, btnRegister, -22, SpringLayout.WEST, btnLogin);
 		panel_1.add(btnRegister);
 		
 		JLabel lblForgotPassword = new JLabel("Forgot Password?");
+		lblForgotPassword.setBounds(175, 292, 100, 14);
 		lblForgotPassword.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -246,8 +257,6 @@ public class Login extends JFrame {
 			}
 		});
 		lblForgotPassword.setForeground(new Color(12, 142, 245));
-		sl_panel_1.putConstraint(SpringLayout.WEST, lblForgotPassword, 175, SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblForgotPassword, -22, SpringLayout.SOUTH, panel_1);
 		lblForgotPassword.setFont(GoogleSansRegular.deriveFont(10f));
 		panel_1.add(lblForgotPassword);
 	
