@@ -34,8 +34,7 @@ public class Login extends JFrame {
 	Font GoogleSansRegular;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	JLabel lblRegister = new JLabel("Register");
-	JLabel lblLogin = new JLabel("Login");
+	private boolean isLogin = true;
 
 	/**
 	 * Launch the application.
@@ -88,6 +87,22 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setFont(GoogleSansBold.deriveFont(50f));
+		lblLogin.setForeground(new Color(12, 142, 245));
+		lblLogin.setBounds(191, 27, 204, 59);
+		contentPane.add(lblLogin);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(166, 114, 447, 72);
+		contentPane.add(panel_4);
+		
+		JLabel lblRegister = new JLabel("Register");
+		lblRegister.setFont(GoogleSansBold.deriveFont(50f));
+		lblRegister.setForeground(new Color(12, 142, 245));
+		lblRegister.setBounds(191, 114, 284, 59);
+		contentPane.add(lblRegister);
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(36, 151, 242));
 		panel.setBounds(0, 0, 165, 462);
@@ -117,9 +132,8 @@ public class Login extends JFrame {
 		panel_1.setLayout(sl_panel_1);
 		
 		JPanel panel_2 = new JPanel();
-		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_2, 49, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_2, 71, SpringLayout.NORTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.WEST, panel_2, -468, SpringLayout.EAST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_2, 88, SpringLayout.NORTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.EAST, panel_2, -10, SpringLayout.EAST, panel_1);
 		panel_1.add(panel_2);
 		panel_2.setLayout(null);
@@ -138,9 +152,10 @@ public class Login extends JFrame {
 		textField.setColumns(10);
 		
 		JPanel panel_3 = new JPanel();
-		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_3, 48, SpringLayout.SOUTH, panel_2);
-		sl_panel_1.putConstraint(SpringLayout.WEST, panel_3, -1022, SpringLayout.EAST, panel_2);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, 87, SpringLayout.SOUTH, panel_2);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_2, -26, SpringLayout.NORTH, panel_3);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_3, 136, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, panel_3, -400, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, -153, SpringLayout.SOUTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.EAST, panel_3, -10, SpringLayout.EAST, panel_1);
 		panel_1.add(panel_3);
 		panel_3.setLayout(null);
@@ -157,6 +172,23 @@ public class Login extends JFrame {
 		panel_3.add(passwordField);
 		
 		JButton btnLogin = new JButton("Login");
+		sl_panel_1.putConstraint(SpringLayout.NORTH, btnLogin, 229, SpringLayout.NORTH, panel_1);
+		btnLogin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				if (!isLogin) {
+					AnimationClass anim = new AnimationClass();
+					anim.jLabelYDown(lblLogin.getY(), 28, 1, 1, lblLogin);
+					anim.jLabelYDown(lblRegister.getY(), 120, 1, 1, lblRegister);
+					isLogin = true;
+				}
+				btnLogin.setBackground(new Color(0, 114, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnLogin.setBackground(new Color(12, 142, 245));
+			}
+		});
 		btnLogin.setForeground(new Color(250, 250, 250));
 		btnLogin.setBackground(new Color(12, 142, 245));
 		btnLogin.setBorderPainted(false);
@@ -165,7 +197,6 @@ public class Login extends JFrame {
 		sl_panel_1.putConstraint(SpringLayout.WEST, btnLogin, -152, SpringLayout.EAST, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnLogin, 93, SpringLayout.SOUTH, panel_3);
 		btnLogin.setBorder(UIManager.getBorder("MenuBar.border"));
-		sl_panel_1.putConstraint(SpringLayout.NORTH, btnLogin, 54, SpringLayout.SOUTH, panel_3);
 		sl_panel_1.putConstraint(SpringLayout.EAST, btnLogin, -60, SpringLayout.EAST, panel_1);
 		panel_1.add(btnLogin);
 		
@@ -173,10 +204,20 @@ public class Login extends JFrame {
 		btnRegister.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				AnimationClass anim = new AnimationClass();
-				anim.jLabelYUp(lblLogin.getY(), -100, 3, 1, lblLogin);
+				if (isLogin) {
+					AnimationClass anim = new AnimationClass();
+					anim.jLabelYUp(lblLogin.getY(), -70, 1, 1, lblLogin);
+					anim.jLabelYUp(lblRegister.getY(), 28, 1, 1, lblRegister);
+					isLogin = false;
+				}
+				btnRegister.setBackground(new Color(0, 114, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnRegister.setBackground(new Color(12, 142, 245));
 			}
 		});
+		
 		sl_panel_1.putConstraint(SpringLayout.WEST, btnRegister, -167, SpringLayout.WEST, btnLogin);
 		btnRegister.setForeground(new Color(250, 250, 250));
 		btnRegister.setBackground(new Color(12, 142, 245));
@@ -204,17 +245,6 @@ public class Login extends JFrame {
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblForgotPassword, -22, SpringLayout.SOUTH, panel_1);
 		lblForgotPassword.setFont(GoogleSansRegular.deriveFont(10f));
 		panel_1.add(lblForgotPassword);
-		
-		JLabel lblLogin = new JLabel("Login");
-		lblLogin.setForeground(new Color(12, 142, 245));
-		lblLogin.setFont(null);
-		lblLogin.setBounds(191, 27, 204, 59);
-		contentPane.add(lblLogin);
-		
-		JLabel lblRegister = new JLabel("Register");
-		lblRegister.setForeground(new Color(12, 142, 245));
-		lblRegister.setFont(null);
-		lblRegister.setBounds(191, 114, 284, 59);
-		contentPane.add(lblRegister);
+	
 	}
 }
