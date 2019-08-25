@@ -125,6 +125,11 @@ public class Login extends JFrame {
 		sl_panel.putConstraint(SpringLayout.NORTH, lblTeammusic, 6, SpringLayout.SOUTH, Icon);
 		panel.add(lblTeammusic);
 		
+		JLabel lblTeammusicAdalahSebuah = new JLabel("TeamMusic Adalah Sebuah Aplikasi Android");
+		sl_panel.putConstraint(SpringLayout.NORTH, lblTeammusicAdalahSebuah, 19, SpringLayout.SOUTH, lblTeammusic);
+		sl_panel.putConstraint(SpringLayout.WEST, lblTeammusicAdalahSebuah, 53, SpringLayout.WEST, panel);
+		panel.add(lblTeammusicAdalahSebuah);
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(0, 114, 632, 328);
 		contentPane.add(panel_1);
