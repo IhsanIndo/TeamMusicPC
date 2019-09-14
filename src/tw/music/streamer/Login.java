@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import AppPackage.AnimationClass;
+import tw.music.streamer.res.*;
 
 public class Login extends JFrame {
 
@@ -59,27 +60,28 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-		
+		/*
 		// Importing Fonts
 		try {
 			
-			GoogleSansBold = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/GoogleSans-Bold.ttf")).deriveFont(20f);
+			GoogleSansBold = Font.createFont(Font.TRUETYPE_FONT, new File("tw.music.streamer.res.GoogleSans-Bold.ttf")).deriveFont(20f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/GoogleSans-Bold.ttf")));
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("tw.music.streamer.res.GoogleSans-Bold.ttf")));
 			
-			GoogleSansMedium = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/GoogleSans-Medium.ttf")).deriveFont(20f);
+			GoogleSansMedium = Font.createFont(Font.TRUETYPE_FONT, new File("tw.music.streamer.res.GoogleSans-Medium.ttf")).deriveFont(20f);
 			GraphicsEnvironment gq = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			gq.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/GoogleSans-Medium.ttf")));
+			gq.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("tw.music.streamer.res.GoogleSans-Medium.ttf")));
 			
-			GoogleSansRegular = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/GoogleSans-Regular.ttf")).deriveFont(20f);
+			GoogleSansRegular = Font.createFont(Font.TRUETYPE_FONT, new File("tw.music.streamer.res.GoogleSans-Regular.ttf")).deriveFont(20f);
 			GraphicsEnvironment gw = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			gw.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/GoogleSans-Regular.ttf")));
+			gw.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("tw.music.streamer.res.GoogleSans-Regular.ttf")));
 			
 		} catch (FontFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {}
+		*/
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 629, 465);
